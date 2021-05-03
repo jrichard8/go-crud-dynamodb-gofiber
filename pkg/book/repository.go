@@ -12,33 +12,29 @@ import (
 )
 
 type Repository interface {
-	CreateBook(book *entities.Book) (*entities.Book, error)
+	CreateBook(book *entities.Book) error
 	ReadBooks() (*[]entities.Book, error)
 	UpdateBook(book *entities.Book) (*entities.Book, error)
 	DeleteBook(book *entities.BookKey) (*entities.Book, error)
 }
 
-func (r *repository) CreateBook(book *entities.Book) (*entities.Book, error) {
+func (r *repository) CreateBook(book *entities.Book) error {
 
 	b, err := attributevalue.MarshalMap(book)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	param := &dynamodb.PutItemInput{
 		Item:         b,
 		TableName:    aws.String(r.table),
 		ReturnValues: types.ReturnValueNone,
 	}
-	item, err := r.Dyn.PutItem(context.TODO(), param)
+	_, err = r.Dyn.PutItem(context.TODO(), param)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	result := entities.Book{}
-	err = attributevalue.UnmarshalMap(item.Attributes, &result)
-	if err != nil {
-		return nil, err
-	}
-	return &result, nil
+
+	return nil
 }
 
 func (r *repository) ReadBooks() (*[]entities.Book, error) {

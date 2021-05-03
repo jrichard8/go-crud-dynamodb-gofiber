@@ -3,7 +3,7 @@ package book
 import "go-crud-dynamodb-gofiber/pkg/entities"
 
 type Service interface {
-	InsertBook(book *entities.Book) (*entities.Book, error)
+	InsertBook(book *entities.Book) error
 	FetchBooks() (*[]entities.Book, error)
 	UpdateBook(book *entities.Book) (*entities.Book, error)
 	RemoveBook(book *entities.BookKey) (*entities.Book, error)
@@ -13,7 +13,7 @@ type service struct {
 	repo Repository
 }
 
-func (s *service) InsertBook(book *entities.Book) (*entities.Book, error) {
+func (s *service) InsertBook(book *entities.Book) error {
 	return s.repo.CreateBook(book)
 }
 

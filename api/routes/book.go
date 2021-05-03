@@ -59,10 +59,9 @@ func addBook(service book.Service) fiber.Handler {
 				"error":   err,
 			})
 		}
-		result, dberr := service.InsertBook(&requestBody)
+		dberr := service.InsertBook(&requestBody)
 		return c.JSON(&fiber.Map{
-			"status": result,
-			"error":  dberr,
+			"error": dberr,
 		})
 	}
 }
