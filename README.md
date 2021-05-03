@@ -45,13 +45,13 @@ You can see in your terminal this log:
 
 ### Base Route
 ```text
-    GET - http://localhost:8080/
+    GET - http://localhost:3000/
 ```
 
 #### Post
 This route create on item in your database
 ```text
-    POST - http://localhost:8080/api/books
+    POST - http://localhost:3000/api/books
 
     {
         "Title": "WhyJavaSucks"
@@ -65,13 +65,13 @@ curl -d "Title=WhyJavaSucks&Author=Me" -X POST -H "Accept: application/json" htt
 ### Get_All
 This route return all data in your database
 ```text
-    GET - http://localhost:8080/api/books
+    GET - http://localhost:3000/api/books
 ```
 
 #### Put
 This route update on item in your database
 ```text
-    PUT - http://localhost:8080/api/books/
+    PUT - http://localhost:3000/api/books/
     {   
         "Title": "WhyJavaSucks"
         "Author": "me"
@@ -86,7 +86,7 @@ curl -d "Title=WhyJavaSucks&Author=Me&Rating=0.8" -X PUT -H "Accept: application
 #### Delete
 This route remove on item in your database
 ```text
-    DELETE - http://localhost:8080/api/books/
+    DELETE - http://localhost:3000/api/books/
     {   
         "Title": "WhyJavaSucks"
         "Author": "me"
