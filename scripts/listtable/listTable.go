@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	//TODO: remove custom resolver to work with real instance of dynamodb
 	customResolver := aws.EndpointResolverFunc(func(service, region string) (aws.Endpoint, error) {
 		return aws.Endpoint{
 			URL: "http://localhost:8000",
