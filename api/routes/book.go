@@ -15,7 +15,7 @@ func BookRouter(app fiber.Router, service book.Service) {
 
 func removeBook(service book.Service) fiber.Handler {
 	return func(c *fiber.Ctx) error {
-		var requestBody entities.Book
+		var requestBody entities.BookKey
 		err := c.BodyParser(&requestBody)
 		if err != nil {
 			_ = c.JSON(&fiber.Map{
@@ -23,16 +23,10 @@ func removeBook(service book.Service) fiber.Handler {
 				"error":   err,
 			})
 		}
-		dberr := service.RemoveBook(&requestBody)
-		if dberr != nil {
-			_ = c.JSON(&fiber.Map{
-				"status": false,
-				"error":  err,
-			})
-		}
+		result, dberr := service.RemoveBook(&requestBody)
 		return c.JSON(&fiber.Map{
-			"status":  false,
-			"message": "updated successfully",
+			"status": result,
+			"error":  dberr,
 		})
 	}
 }

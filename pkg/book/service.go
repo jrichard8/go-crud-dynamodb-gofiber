@@ -6,7 +6,7 @@ type Service interface {
 	InsertBook(book *entities.Book) (*entities.Book, error)
 	FetchBooks() (*[]entities.Book, error)
 	UpdateBook(book *entities.Book) (*entities.Book, error)
-	RemoveBook(book *entities.Book) error
+	RemoveBook(book *entities.BookKey) (*entities.Book, error)
 }
 
 type service struct {
@@ -25,7 +25,7 @@ func (s *service) UpdateBook(book *entities.Book) (*entities.Book, error) {
 	return s.repo.UpdateBook(book)
 }
 
-func (s *service) RemoveBook(book *entities.Book) error {
+func (s *service) RemoveBook(book *entities.BookKey) (*entities.Book, error) {
 	return s.repo.DeleteBook(book)
 }
 
