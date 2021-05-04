@@ -12,7 +12,7 @@ Simple of CRUD REST API backed by DynamoDB wrote in Golang based on AWS SDK V2
 * You also need [DOCKER](https://docs.docker.com/get-docker/)
 
 ### Install
-If you already have golang installed you can install by running the command:
+If you already have golang installed you can install packages by running the command:
 ```sh
 go get -u ./...
 ```
@@ -24,7 +24,7 @@ docker run -p 8000:8000 amazon/dynamodb-local
 ```shell
 go run scripts/createTable.go
 ```
-Verify that table is created:
+Verify that the table is created:
 ```shell
 go run scripts/listTable.go
 ```
