@@ -49,7 +49,7 @@ You can see in your terminal this log:
 ```
 
 #### Post
-This route create on item in your database
+This route creates an item in your database
 ```text
     POST - http://localhost:3000/api/books
 
@@ -63,13 +63,13 @@ curl -d "Title=WhyJavaSucks&Author=Me" -X POST -H "Accept: application/json" htt
 ```
 
 ### Get_All
-This route return all data in your database
+This route returns all data in your database
 ```text
     GET - http://localhost:3000/api/books
 ```
 
 #### Put
-This route update on item in your database
+This route updates an item in your database
 ```text
     PUT - http://localhost:3000/api/books/
     {   
@@ -84,7 +84,7 @@ curl -d "Title=WhyJavaSucks&Author=Me&Rating=0.8" -X PUT -H "Accept: application
 ```
 
 #### Delete
-This route remove on item in your database
+This route removes an item in your database
 ```text
     DELETE - http://localhost:3000/api/books/
     {   
